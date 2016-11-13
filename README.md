@@ -18,3 +18,5 @@ mogrify -resize 60x60 +dither -format xbm wifi.png
 platformio lib install 335
 platformio lib install 562
 ```
+### wireing
+![oled](8266OLED_I2C.png)
