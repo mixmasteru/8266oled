@@ -6,6 +6,11 @@
 
 // Include custom images
 #include "wifi.h"
+#include "img/bat0.h"
+#include "img/bat1.h"
+#include "img/bat2.h"
+#include "img/bat3.h"
+#include "img/bat4.h"
 
 // Initialize the OLED display using brzo_i2c
 // D3 -> SDA
@@ -30,7 +35,7 @@ void setup() {
 
 void drawImageDemo() {
     //in ubuntu use: mogrify -resize 60x60 +dither -format xbm wifi.png
-    display.drawXbm(34, 14, wifi_width, wifi_height, wifi_bits);
+    display.drawXbm(34, 14, bat0_width, bat0_height, bat0_bits);
 }
 
 void loop() {
