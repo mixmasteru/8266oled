@@ -6,19 +6,17 @@
 
 // Include custom images
 #include "wifi.h"
-#include "img/bat0.h"
-#include "img/bat1.h"
-#include "img/bat2.h"
-#include "img/bat3.h"
-#include "img/bat4.h"
+#include "img/banana.h"
 
 // Initialize the OLED display using brzo_i2c
 // D3 -> SDA
 // D5 -> SCL
 SSD1306Brzo display(0x3c, D3, D5);
 
-int demoMode = 0;
-int counter = 1;
+#define FRAME_DURATION 100
+int frame = 0;
+int frameLength = 8;
+long timeSinceLastFrame = 0;
 
 void setup() {
   Serial.begin(115200);
@@ -33,18 +31,23 @@ void setup() {
   display.setFont(ArialMT_Plain_10);
 }
 
-void drawImageDemo() {
+void drawImageDemo(int index) {
     //in ubuntu use: mogrify -resize 60x60 +dither -format xbm wifi.png
-    display.drawXbm(34, 14, bat0_width, bat0_height, bat0_bits);
+    display.drawXbm(34, 14, banana_width, banana_height, banana_bits[index]);
 }
 
 void loop() {
   // clear the display
   display.clear();
-  drawImageDemo();
+  drawImageDemo(frame);
   display.setTextAlignment(TEXT_ALIGN_RIGHT);
-  display.drawString(10, 128, String(millis()));
+  display.drawString(10, 10, String(frame));
   // write the buffer to the display
   display.display();
+
+  if (millis() - timeSinceLastFrame > FRAME_DURATION) {
+    frame = (frame + 1)  % frameLength;
+    timeSinceLastFrame = millis();
+  }
   delay(10);
 }
