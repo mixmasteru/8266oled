@@ -6,6 +6,9 @@ PlatformIO project for esp8266/nodemcu and OLED display
 * OLED Display SSD1306 I2C 128x64
 * esp8266
 
+### Dancing Banana
+![Dancing Banana](dancing_banana.gif)
+
 ### Images
 convert images to HEX arrays
 in ubuntu you can use:

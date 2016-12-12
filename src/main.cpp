@@ -5,7 +5,7 @@
 #include "SSD1306Brzo.h"
 
 // Include custom images
-#include "wifi.h"
+#include "img/wifi.h"
 #include "img/banana.h"
 
 // Initialize the OLED display using brzo_i2c
